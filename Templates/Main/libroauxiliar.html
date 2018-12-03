@@ -1,0 +1,48 @@
+{% extends "Base/base.html" %}
+
+{% block Contenido %}
+<div class="col-md-8 col-md-offset-2 tex">
+	<div class="col-md-8">
+	</div>
+
+	<title>Libros</title>
+	<h1>LIBRO AUXILIAR</h1>
+	<h3>SETIMSA, S.A. DE C.V.</h3> 
+	<table>
+		<table id="aux" class="table table-bordered table-striped table-hover">
+			<thead>
+				<tr>
+					<th>Codigo</th>
+					<th>Nombre</th>
+					<th>Debe</th>
+					<th>Haber</th>
+					<th>Total</th>
+				</tr>
+			</thead>
+			<tbody>
+				
+					{%for c in cuentitas%}
+					{% csrf_token %}
+						<tr>
+							<td><br><label> {{c.codigo}}</label></td>
+							<td><br><label> {{c.nombre}}</label></td>
+							<td><br><label> {{c.debe}}</label></td>
+							<td><br><label> {{c.haber}}</label></td>
+							<td><br><label> {{c.total}}</label></td>
+
+					{%endfor%}
+						<tr>
+							<td><br><label>Total<td></td><td><br>{{totalDebe}}</td><td><br>{{totalHaber}}</td><td><br>{{total}}</td></label></td>
+						</tr>
+	</table>
+	<script >
+	function imprimir(){
+			window.print("estadoResultado");
+			
+		}
+	</script>
+	<input type="button" value="IMPRIMIR" onclick="imprimir()" style="BORDER: rgb(255,0,0) 10px solid; FONT-SIZE: 20pt; FONT-FAMILY: Verdana; 
+         BACKGROUND-COLOR: rgb(233,233,233)">
+									
+				
+{% endblock Contenido %}
